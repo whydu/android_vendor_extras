@@ -3,18 +3,16 @@
 # what to add to the path given the config we have chosen.
 ifeq ($(CALLED_FROM_SETUP),true)
 
+ifneq ($(filter /%,$(HOST_OUT_EXECUTABLES)),)
+ABP:=$(HOST_OUT_EXECUTABLES)
+else
 ABP:=$(PWD)/$(HOST_OUT_EXECUTABLES)
+endif
 
-# Add the ARM toolchain bin dir if it actually exists
+# Add the toolchain bin dir if it actually exists
 ifneq ($(wildcard $(PWD)/prebuilt/$(HOST_PREBUILT_TAG)/toolchain/arm-linux-androideabi-4.4.x/bin),)
 	# this should be copied to HOST_OUT_EXECUTABLES instead
 	ABP:=$(ABP):$(PWD)/prebuilt/$(HOST_PREBUILT_TAG)/toolchain/arm-linux-androideabi-4.4.x/bin
-endif
-
-# Add the x86 toolchain bin dir if it actually exists
-ifneq ($(wildcard $(PWD)/prebuilt/$(HOST_PREBUILT_TAG)/toolchain/i686-android-linux-4.4.3/bin),)
-	# this should be copied to HOST_OUT_EXECUTABLES instead
-	ABP:=$(ABP):$(PWD)/prebuilt/$(HOST_PREBUILT_TAG)/toolchain/i686-android-linux-4.4.3/bin
 endif
 ANDROID_BUILD_PATHS := $(ABP)
 ANDROID_PREBUILTS := prebuilt/$(HOST_PREBUILT_TAG)
@@ -78,5 +76,6 @@ $(info   HOST_ARCH=$(HOST_ARCH))
 $(info   HOST_OS=$(HOST_OS))
 $(info   HOST_BUILD_TYPE=$(HOST_BUILD_TYPE))
 $(info   BUILD_ID=$(BUILD_ID))
+$(info   OUT_DIR=$(OUT_DIR))
 $(info ============================================)
 endif
