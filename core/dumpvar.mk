@@ -6,16 +6,6 @@ print_build_config_vars := \
   TARGET_ARCH_VARIANT \
   TARGET_CPU_VARIANT \
 
-ifneq ($(TARGET_2ND_ARCH_VARIANT),)
-print_build_config_vars += \
-  TARGET_2ND_ARCH_VARIANT
-endif
-
-ifneq ($(TARGET_2ND_CPU_VARIANT),)
-print_build_config_vars += \
-  TARGET_2ND_CPU_VARIANT
-endif
-
 print_build_config_vars += \
   BUILD_ID
 
