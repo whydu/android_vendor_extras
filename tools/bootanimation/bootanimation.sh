@@ -45,9 +45,7 @@ fi
 
 # Check to see if user input equal up to numbers
 if [[ $1 =~ ^-?[0-9]+.?[0]+$ ]]; then
-    continue
-elif [[ $1 =~ ^\+?[0-9]+.?[0]+$ ]]; then
-    continue
+    echo
 else
     echo
     echo -e ${RED}"-- Make sure you provide width & height"${RED}
