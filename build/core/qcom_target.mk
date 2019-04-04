@@ -1,6 +1,9 @@
 # Bring in Qualcomm helper macros
 include vendor/extras/build/core/qcom_utils.mk
 
+# AOSP ril
+$(call project-set-path-variant,ril,TARGET_RIL_VARIANT,hardware/ril)
+
 define wlan-set-path-variant
 $(call project-set-path-variant,wlan,TARGET_WLAN_VARIANT,hardware/qcom/$(1))
 endef
